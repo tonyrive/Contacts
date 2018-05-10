@@ -17,8 +17,6 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static android.support.design.widget.Snackbar.*;
-
 public class ContactDetailsActivity extends AppCompatActivity
         implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -83,7 +81,7 @@ public class ContactDetailsActivity extends AppCompatActivity
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.CALL_PHONE)) {
 
-            make(v, R.string.permission_phone_rationale, LENGTH_INDEFINITE)
+            Snackbar.make(v, R.string.permission_phone_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(R.string.ok, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

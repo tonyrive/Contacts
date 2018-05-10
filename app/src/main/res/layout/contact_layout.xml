@@ -46,13 +46,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/displayName"
-                    android:text="Tony Rivera"/>
+                    android:text="Tony Rivera"
+                    style="@style/ContactManager"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/phone"
-                    android:text="Phone"/>
+                    android:text="Phone"
+                    style="@style/ContactManager" />
 
             </LinearLayout>
 

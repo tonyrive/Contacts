@@ -27,7 +27,8 @@
         android:layout_marginStart="261dp"
         android:layout_marginLeft="261dp"
         android:layout_marginTop="40dp"
-        android:text="Name" />
+        android:text="Name"
+        style="@style/appTextViewStyle" />
 
     <TextView
         android:id="@+id/address"
@@ -37,7 +38,8 @@
         android:layout_alignStart="@+id/displayName"
         android:layout_alignLeft="@+id/displayName"
         android:layout_marginTop="70dp"
-        android:text="Address" />
+        android:text="Address"
+        style="@style/appTextViewStyle" />
 
     <TextView
         android:id="@+id/address2"
@@ -47,7 +49,8 @@
         android:layout_alignStart="@+id/displayName"
         android:layout_alignLeft="@+id/displayName"
         android:layout_marginTop="100dp"
-        android:text="Address 2" />
+        android:text="Address 2"
+        style="@style/appTextViewStyle" />
 
     <TextView
         android:id="@+id/phone"
@@ -56,7 +59,8 @@
         android:layout_alignStart="@+id/displayName"
         android:layout_alignLeft="@+id/displayName"
         android:layout_marginTop="130dp"
-        android:text="Phone" />
+        android:text="Phone"
+        style="@style/appTextViewStyle" />
 
     <Button
         android:id="@+id/callPhone"
@@ -68,5 +72,6 @@
         android:layout_marginBottom="61dp"
         android:layout_marginStart="95dp"
         android:layout_marginLeft="95dp"
-        android:text="Call" />
+        android:text="Call"
+        style="@style/AppTheme.RoundedCornerMaterialButton" />
 </RelativeLayout>

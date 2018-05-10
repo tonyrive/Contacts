@@ -17,30 +17,38 @@
         android:id="@+id/displayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/appTextViewStyle"
         android:text="Name" android:paddingTop="8dp" />
 
     <TextView
         android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/appTextViewStyle"
         android:text="Address" android:paddingTop="8dp" />
 
     <TextView
         android:id="@+id/address2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/appTextViewStyle"
         android:text="Address 2" android:paddingTop="8dp"/>
 
     <TextView
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phone" android:paddingTop="8dp"/>
+        style="@style/appTextViewStyle"
+        android:text="Phone"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 
     <Button
         android:id="@+id/callPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Call" android:paddingTop="8dp" />
+        style="@style/AppTheme.RoundedCornerMaterialButton"
+        android:text="Call"
+        android:layout_margin="8dp" />
 
 </LinearLayout>
