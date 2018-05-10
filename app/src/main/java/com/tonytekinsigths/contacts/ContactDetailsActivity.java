@@ -1,7 +1,6 @@
 package com.tonytekinsigths.contacts;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -18,7 +17,14 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ContactDetailsActivity extends AppCompatActivity {
+public class ContactDetailsActivity extends AppCompatActivity
+        implements ActivityCompat.OnRequestPermissionsResultCallback {
+
+    private static final int REQUEST_PHONE = 0;
+    private static final int REQUEST_CONTACTS = 1;
+    private static final int REQUEST_INTERNET = 2;
+    public static final String[] REQUEST_READ_CONTACTS = {Manifest.permission.READ_CONTACTS,
+            Manifest.permission.WRITE_CONTACTS};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,31 +60,43 @@ public class ContactDetailsActivity extends AppCompatActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Activity activity = ContactDetailsActivity.this;
-
-                if(ActivityCompat.checkSelfPermission(activity,
-                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(activity,
-                            Manifest.permission.CALL_PHONE)) {
-
-                        Snackbar.make(v, "Need permission to call", Snackbar.LENGTH_SHORT).show();
-                    }
-                    else {
-                        ActivityCompat.requestPermissions(activity,
-                                new String[]{Manifest.permission.CALL_PHONE},
-                                1);
-                    }
-                }
-                OnCall(contact.getPhone());
+                onCallClick(v, contact.getPhone());
             }
         });
     }
 
-    private void OnCall(String number){
-        Intent phoneIntent = new Intent(Intent.ACTION_CALL);
-        phoneIntent.setData(Uri.parse("tel:" + number));
-        startActivity(phoneIntent);
+    private void onCallClick(View v, String number){
+        if(ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+            requestPhonePermission(v);
+        }
+        else {
+            Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+            phoneIntent.setData(Uri.parse("tel:" + number));
+            startActivity(phoneIntent);
+        }
+    }
+
+    private void requestPhonePermission(View v) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CALL_PHONE)) {
+
+            Snackbar.make(v, R.string.permission_phone_rationale, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(R.string.ok, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ActivityCompat.requestPermissions(ContactDetailsActivity.this,
+                                    new String[]{Manifest.permission.CALL_PHONE},
+                                    REQUEST_PHONE);
+                        }
+                    })
+                    .show();
+        }
+        else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CALL_PHONE},
+                    REQUEST_PHONE);
+        }
     }
 
     private Contact getContact() {

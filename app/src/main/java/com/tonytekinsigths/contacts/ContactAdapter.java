@@ -25,11 +25,11 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.CustomerViewHolder> {
-    private Context context;
+    //private Context context;
     private List<Contact> contacts;
 
     public ContactAdapter(Context context, List<Contact> contacts) {
-        this.context = context;
+        //this.context = context;
         this.contacts = contacts;
     }
 
@@ -63,7 +63,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.Customer
                 contactDetailsIntent.putExtra("SelectedContact", contact);
                 v.getContext().startActivity(contactDetailsIntent);
 
-                Toast.makeText(context, contact.getDisplayName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, contact.getDisplayName(), Toast.LENGTH_SHORT).show();
             }
         });
 

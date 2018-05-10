@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Contacts</string>
+    <string name="app_name">Contact Manager</string>
     <string name="json_file">Contacts.json</string>
+    <string name="ok">OK</string>
+    <string name="permissions_not_granted">Permissions were not granted.</string>
+    <string name="permission_phone_rationale">Phone permissions are needed to demonstrate access.</string>
 </resources>
