@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Contact> contacts = loadData();
-        ContactAdapter adapter = new ContactAdapter(
-                MainActivity.this, contacts);
+        ContactAdapter adapter = new ContactAdapter(contacts);
 
         recyclerView.setAdapter(adapter);
     }

@@ -25,11 +25,9 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.CustomerViewHolder> {
-    //private Context context;
     private List<Contact> contacts;
 
-    public ContactAdapter(Context context, List<Contact> contacts) {
-        //this.context = context;
+    public ContactAdapter(List<Contact> contacts) {
         this.contacts = contacts;
     }
 
