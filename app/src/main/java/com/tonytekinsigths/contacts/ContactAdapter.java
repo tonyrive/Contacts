@@ -34,37 +34,14 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.Customer
     @NonNull
     @Override
     public CustomerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vi = LayoutInflater.from(
-                parent.getContext()).inflate(
-                        R.layout.contact_layout, parent, false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View vi = layoutInflater.inflate(R.layout.contact_layout, parent, false);
         return new CustomerViewHolder(vi);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position) {
-        final Contact contact = contacts.get(position);
-
-        if(!contact.getPicture().isEmpty())
-            Picasso.get().load(contact.getPicture()).into(holder.avatar);
-
-        holder.displayName.setText(contact.getDisplayName());
-
-        if(!contact.getPhone().isEmpty())
-            holder.phone.setText(PhoneNumberUtils.formatNumber(contact.getPhone()));
-        else
-            holder.phone.setText("");
-
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent contactDetailsIntent = new Intent(v.getContext(), ContactDetailsActivity.class);
-                contactDetailsIntent.putExtra("SelectedContact", contact);
-                v.getContext().startActivity(contactDetailsIntent);
-
-                //Toast.makeText(context, contact.getDisplayName(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        holder.bind(contacts.get(position));
     }
 
     @Override
@@ -85,6 +62,28 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.Customer
             displayName = (TextView)itemView.findViewById(R.id.displayName);
             phone = (TextView)itemView.findViewById(R.id.phone);
             cardView = (CardView)itemView.findViewById(R.id.cardView);
+        }
+
+        public void bind(final Contact contact){
+            if(!contact.getPicture().isEmpty())
+                Picasso.get().load(contact.getPicture()).into(avatar);
+
+            displayName.setText(contact.getDisplayName());
+
+            if(!contact.getPhone().isEmpty())
+                phone.setText(PhoneNumberUtils.formatNumber(contact.getPhone()));
+            else
+                phone.setText("");
+
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent contactDetailsIntent = new Intent(v.getContext(), ContactDetailsActivity.class);
+                    contactDetailsIntent.putExtra("SelectedContact", contact);
+                    v.getContext().startActivity(contactDetailsIntent);
+                    //Toast.makeText(context, contact.getDisplayName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
